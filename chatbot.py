@@ -1,7 +1,10 @@
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
-def greetings_check(sentence):
-	for word in sentence:
+from textblob import Word
+import random
+
+def greetings_check(tb):
+	for word in tb.words:
 		if word.lower() in GREETING_KEYWORDS:
 			return random.choice(GREETING_RESPONSES)
 
@@ -40,16 +43,12 @@ GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 cl = NaiveBayesClassifier(train)
 
 sentence="hey how are you"
-b=TextBlob(sentence)
+tb=TextBlob(sentence)
 # text=b.lower()
 #text=b.correct()
 
 #print(cl.classify(text))
 #prob_dist = cl.prob_classify(text)
 #print(round(prob_dist.prob("pos"), 2
-for sentence.words in sentence:
-	print(sentence.words)
-	if sentence.words in GREETING_KEYWORDS:
-		print("yes")
-t=greetings_check(sentence)
+t=greetings_check(tb)
 print(t)

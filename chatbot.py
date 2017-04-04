@@ -41,14 +41,11 @@ GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 
 #if__name__== "__main__":
 cl = NaiveBayesClassifier(train)
-
-sentence="hey how are you"
-tb=TextBlob(sentence)
-# text=b.lower()
-#text=b.correct()
-
-#print(cl.classify(text))
-#prob_dist = cl.prob_classify(text)
-#print(round(prob_dist.prob("pos"), 2
-t=greetings_check(tb)
-print(t)
+print('Hi I\'m Jessy. Ask me something')
+sentence=input()
+while sentence.lower()!='bye':
+	tb=TextBlob(sentence)
+	t=greetings_check(tb)
+	print(t)
+	sentence=input()
+print('Bye,Have a nice day!')

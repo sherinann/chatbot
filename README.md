@@ -9,4 +9,4 @@ Textblob (library in python)
 * Gopikrishnan Sasikumar https://github.com/GopikrishnanSasikumar
 
 # Tada !
-![chatbot demo](/Users/gopi/Desktop/chatbot.png)
+![chatbot demo](chatbot.png?raw=true "demo")

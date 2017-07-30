@@ -8,9 +8,17 @@ def greetings_check(tb):
 		if word.lower() in GREETING_KEYWORDS:
 			return random.choice(GREETING_RESPONSES)
 
+def reply_engine(sentence,train):
+    cl = NaiveBayesClassifier(train)
+    k = str(cl.classify((sentence)))
+    if k == 'pos':
+        return random.choice(POSITIVE_RESPONSE)
+    elif k == 'neg':
+        return random.choice(NEGATIVE_RESPONSE)
+
+
 train = [
-     ('I love this sandwich.', 'pos'),
-     ('this is an amazing place!', 'pos'),
+     ('I love this sandwich.', 'pos'), ('this is an amazing place!', 'pos'),
      ('I feel very good about these beers.', 'pos'),
      ('this is my best work.', 'pos'),
      ("what an awesome view", 'pos'),
@@ -20,7 +28,8 @@ train = [
      ('he is my sworn enemy!', 'neg'),
      ('my boss is horrible.', 'neg'),
      ("i hate you.",'neg'),
-     ("i love mangoes.",'pos')
+     ("i love mangoes.",'pos'),
+     ("i am sad.", 'neg')
 ]
 
 test = [
@@ -37,15 +46,19 @@ GREETING_KEYWORDS = ("hello","hey", "hi", "greetings", "sup", "what's up","namas
 
 GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 
+POSITIVE_RESPONSE = ["wow thats cool", "amazing", "you are awesome", "happy to hear that"]
+NEGATIVE_RESPONSE = ["thats bad", "i am sorry", "this is embarassing", "its ok"]
 
 
-#if__name__== "__main__":
-cl = NaiveBayesClassifier(train)
+
 print('Hi I\'m Jessy. Ask me something')
-sentence=input()
-while sentence.lower()!='bye':
-	tb=TextBlob(sentence)
-	t=greetings_check(tb)
-	print(t)
-	sentence=input()
+sentence = input()
+
+while sentence.lower() != 'bye':
+   tb = TextBlob(sentence)
+   t = str(greetings_check(tb))
+   if t == 'None':
+       t = reply_engine(tb,train)
+   print(t)
+   sentence = input()
 print('Bye,Have a nice day!')

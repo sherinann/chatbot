@@ -18,7 +18,7 @@ def reply_engine(sentence,train):
 
 
 train = [
-     ('I love this sandwich.', 'pos'), ('this is an amazing place!', 'pos'),
+     ('I love this amazing place.', 'pos'), ('this is an amazing food!', 'pos'), #changing in train words
      ('I feel very good about these beers.', 'pos'),
      ('this is my best work.', 'pos'),
      ("what an awesome view", 'pos'),
@@ -47,11 +47,11 @@ GREETING_KEYWORDS = ("hello","hey", "hi", "greetings", "sup", "what's up","namas
 GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 
 POSITIVE_RESPONSE = ["wow thats cool", "amazing", "you are awesome", "happy to hear that"]
-NEGATIVE_RESPONSE = ["thats bad", "i am sorry", "this is embarassing", "its ok"]
+NEGATIVE_RESPONSE = ["thats worst", "i am sorry", "this is embarassing", "its ok"]  #changing in negative response
 
 
 
-print('Hi I\'m Jessy. Ask me something')
+print('Hi I\'m Jessy. Ask me anything')
 sentence = input()
 
 while sentence.lower() != 'bye':
